@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community | Calmia</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -143,12 +143,10 @@
                                 <button id="emojiToggle" class="text-gray-500 hover:text-[#4A90E2] p-2 rounded-full hover:bg-[#F2F2F2]">
                                     <i class="far fa-smile"></i>
                                 </button>
-                                <button class="text-gray-500 hover:text-[#4A90E2] p-2 rounded-full hover:bg-[#F2F2F2]">
-                                    <i class="fas fa-tag"></i>
-                                </button>
-                                <button class="text-gray-500 hover:text-[#4A90E2] p-2 rounded-full hover:bg-[#F2F2F2]">
+                                <button id="lockToggle" class="text-gray-500 hover:text-[#4A90E2] p-2 rounded-full hover:bg-[#F2F2F2]">
                                     <i class="fas fa-lock"></i>
                                 </button>
+
                             </div>
                             <button id="postStory" class="bg-[#4A90E2] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#3a7bc8] disabled:opacity-50" disabled>
                                 Posting
@@ -175,249 +173,17 @@
                 </div>
             </div>
 
-            <!-- Story Filters -->
-            <div class="bg-white rounded-xl p-4 mb-6 shadow-sm flex overflow-x-auto space-x-2">
-                <button class="filter-btn bg-[#4A90E2] text-white px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
-                    Semua Cerita
-                </button>
-                <button class="filter-btn bg-[#F2F2F2] hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
-                    #selflove
-                </button>
-                <button class="filter-btn bg-[#F2F2F2] hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
-                    #anxiety
-                </button>
-                <button class="filter-btn bg-[#F2F2F2] hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
-                    #depresi
-                </button>
-                <button class="filter-btn bg-[#F2F2F2] hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
-                    #healing
-                </button>
-                <button class="filter-btn bg-[#F2F2F2] hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
-                    #motivasi
-                </button>
-                <button class="filter-btn bg-[#F2F2F2] hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
-                    #keluarga
-                </button>
-            </div>
+
 
             <!-- Stories List -->
             <div class="space-y-4" id="storiesContainer">
-                <!-- Story Card 1 -->
-                <div class="story-card bg-white rounded-xl p-6 shadow-sm">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-[#CDEAC0] flex items-center justify-center">
-                                <span class="text-sm font-medium">R</span>
-                            </div>
-                            <div>
-                                <h3 class="font-medium">Rina</h3>
-                                <p class="text-xs text-gray-500">2 jam lalu</p>
-                            </div>
-                        </div>
-                        <button class="text-gray-400 hover:text-gray-600">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </button>
-                    </div>
-                    <div class="mb-4">
-                        <p>Hari ini aku akhirnya berani untuk mengatakan "tidak" pada permintaan teman yang selalu menyuruhku mengerjakan tugasnya. Aku merasa bersalah tapi juga lega. 💪</p>
-                        <div class="flex flex-wrap mt-3 gap-2">
-                            <span class="bg-[#F2F2F2] text-xs px-3 py-1 rounded-full">#boundaries</span>
-                            <span class="bg-[#F2F2F2] text-xs px-3 py-1 rounded-full">#selflove</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-3 border-t border-gray-100">
-                        <div class="flex space-x-4">
-                            <button class="flex items-center space-x-1 text-gray-500 hover:text-[#4A90E2]">
-                                <i class="far fa-heart"></i>
-                                <span class="text-sm">24</span>
-                            </button>
-                            <button class="flex items-center space-x-1 text-gray-500 hover:text-[#4A90E2]">
-                                <i class="far fa-comment"></i>
-                                <span class="text-sm">5</span>
-                            </button>
-                        </div>
-                        <button class="text-gray-500 hover:text-[#4A90E2]">
-                            <i class="far fa-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
 
-                <!-- Story Card 2 -->
-                <div class="story-card bg-white rounded-xl p-6 shadow-sm">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-[#AEE3F3] flex items-center justify-center">
-                                <span class="text-sm font-medium">D</span>
-                            </div>
-                            <div>
-                                <h3 class="font-medium">Dito</h3>
-                                <p class="text-xs text-gray-500">Kemarin</p>
-                            </div>
-                        </div>
-                        <button class="text-gray-400 hover:text-gray-600">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </button>
-                    </div>
-                    <div class="mb-4">
-                        <p>Setelah 3 bulan terapi, akhirnya aku bisa naik transportasi umum lagi tanpa panic attack. Progres kecil tapi sangat berarti buatku. Terima kasih untuk yang selalu support. 🙏</p>
-                        <div class="flex flex-wrap mt-3 gap-2">
-                            <span class="bg-[#F2F2F2] text-xs px-3 py-1 rounded-full">#anxiety</span>
-                            <span class="bg-[#F2F2F2] text-xs px-3 py-1 rounded-full">#progress</span>
-                            <span class="bg-[#F2F2F2] text-xs px-3 py-1 rounded-full">#healing</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-3 border-t border-gray-100">
-                        <div class="flex space-x-4">
-                            <button class="flex items-center space-x-1 text-gray-500 hover:text-[#4A90E2]">
-                                <i class="far fa-heart"></i>
-                                <span class="text-sm">42</span>
-                            </button>
-                            <button class="flex items-center space-x-1 text-gray-500 hover:text-[#4A90E2]">
-                                <i class="far fa-comment"></i>
-                                <span class="text-sm">12</span>
-                            </button>
-                        </div>
-                        <button class="text-gray-500 hover:text-[#4A90E2]">
-                            <i class="far fa-bookmark"></i>
-                        </button>
-                    </div>
-                    
-                    <!-- Comments Section (hidden by default) -->
-                    <div class="mt-4 pt-4 border-t border-gray-100 hidden">
-                        <div class="space-y-3">
-                            <!-- Comment 1 -->
-                            <div class="flex space-x-2">
-                                <div class="w-8 h-8 rounded-full bg-[#F2F2F2] flex items-center justify-center">
-                                    <span class="text-xs">S</span>
-                                </div>
-                                <div class="flex-1 bg-[#F2F2F2] rounded-lg p-2">
-                                    <p class="text-sm font-medium">Sari</p>
-                                    <p class="text-sm">Aku bangga sama progressmu, Dito! Tetap semangat ya 💙</p>
-                                </div>
-                            </div>
-                            <!-- Add Comment -->
-                            <div class="flex space-x-2 mt-2">
-                                <div class="w-8 h-8 rounded-full bg-[#AEE3F3] flex items-center justify-center">
-                                    <span class="text-xs">A</span>
-                                </div>
-                                <div class="flex-1">
-                                    <input type="text" class="w-full border border-gray-200 rounded-full px-3 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-[#4A90E2]" placeholder="Tulis komentar...">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Story Card 3 -->
-                <div class="story-card bg-white rounded-xl p-6 shadow-sm">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-[#CDEAC0] flex items-center justify-center">
-                                <span class="text-sm font-medium">M</span>
-                            </div>
-                            <div>
-                                <h3 class="font-medium">Maya</h3>
-                                <p class="text-xs text-gray-500">3 hari lalu</p>
-                            </div>
-                        </div>
-                        <button class="text-gray-400 hover:text-gray-600">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </button>
-                    </div>
-                    <div class="mb-4">
-                        <p>Hari ini aku memutuskan untuk cuti dari pekerjaan karena burnout. Awalnya merasa bersalah, tapi kemudian menyadari bahwa kesehatan mental lebih penting. Siapa pun yang sedang mengalami hal serupa, kamu tidak sendirian. 💙</p>
-                        <div class="flex flex-wrap mt-3 gap-2">
-                            <span class="bg-[#F2F2F2] text-xs px-3 py-1 rounded-full">#burnout</span>
-                            <span class="bg-[#F2F2F2] text-xs px-3 py-1 rounded-full">#selfcare</span>
-                            <span class="bg-[#F2F2F2] text-xs px-3 py-1 rounded-full">#pekerjaan</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-3 border-t border-gray-100">
-                        <div class="flex space-x-4">
-                            <button class="flex items-center space-x-1 text-gray-500 hover:text-[#4A90E2]">
-                                <i class="far fa-heart"></i>
-                                <span class="text-sm">87</span>
-                            </button>
-                            <button class="flex items-center space-x-1 text-gray-500 hover:text-[#4A90E2]">
-                                <i class="far fa-comment"></i>
-                                <span class="text-sm">23</span>
-                            </button>
-                        </div>
-                        <button class="text-gray-500 hover:text-[#4A90E2]">
-                            <i class="far fa-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Load More Button -->
-            <div class="mt-6 text-center">
-                <button class="bg-white border border-[#4A90E2] text-[#4A90E2] px-6 py-2 rounded-lg font-medium hover:bg-[#F2F2F2]">
-                    Muat Lebih Banyak
-                </button>
-            </div>
-        </main>
-    </div>
+                
 
     <script src="assets/js/stories.js"></script>
-    <script>
-        // Basic functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Enable/disable post button based on input
-            const storyInput = document.getElementById('storyInput');
-            const postButton = document.getElementById('postStory');
-            
-            storyInput.addEventListener('input', function() {
-                postButton.disabled = this.value.trim() === '';
-            });
-            
-            // Toggle emoji picker
-            const emojiToggle = document.getElementById('emojiToggle');
-            const emojiPicker = document.getElementById('emojiPicker');
-            
-            emojiToggle.addEventListener('click', function() {
-                emojiPicker.classList.toggle('show-emoji-picker');
-            });
-            
-            // Add emoji to textarea
-            const emojiOptions = document.querySelectorAll('.emoji-option');
-            emojiOptions.forEach(emoji => {
-                emoji.addEventListener('click', function() {
-                    storyInput.value += this.textContent;
-                    storyInput.focus();
-                });
-            });
-            
-            // Close emoji picker when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!emojiToggle.contains(e.target) && !emojiPicker.contains(e.target)) {
-                    emojiPicker.classList.remove('show-emoji-picker');
-                }
-            });
-            
-            // Filter stories
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('bg-[#4A90E2]', 'text-white');
-                        btn.classList.add('bg-[#F2F2F2]', 'text-gray-700', 'hover:bg-gray-200');
-                    });
-                    this.classList.add('bg-[#4A90E2]', 'text-white');
-                    this.classList.remove('bg-[#F2F2F2]', 'text-gray-700', 'hover:bg-gray-200');
-                    // In a real app, you would filter stories here
-                });
-            });
-            
-            // Toggle comments
-            const commentButtons = document.querySelectorAll('.fa-comment');
-            commentButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const commentsSection = this.closest('.story-card').querySelector('.border-t.border-gray-100 + div');
-                    commentsSection.classList.toggle('hidden');
-                });
-            });
-        });
-    </script>
+
+    
+  
+    
 </body>
 </html>

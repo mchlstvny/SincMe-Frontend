@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Quotes | SincMe.id</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
@@ -86,167 +86,43 @@
             </a>
         </div>
     </div>
+<!-- Main Content -->
+<div class="md:ml-64 pb-16 md:pb-0">
+  <!-- Top Bar -->
+  <header class="bg-white shadow-sm py-4 px-6 sticky top-0 z-40 flex justify-between items-center">
+    <div>
+      <h1 class="text-2xl font-semibold text-gray-800">Daily Quotes</h1>
+    </div>
+  </header>
 
-    <!-- Main Content -->
-    <div class="md:ml-64 pb-16 md:pb-0">
-        <!-- Top Bar -->
-        <header class="bg-white shadow-sm py-4 px-6 sticky top-0 z-40 flex justify-between items-center">
-            <div>
-                <h1 class="text-2xl font-semibold text-gray-800">Daily Quotes</h1>
-            </div>
-            <div class="flex items-center space-x-4">
-                <button class="p-2 rounded-full hover:bg-[#F2F2F2]">
-                    <i class="fas fa-bell text-gray-600"></i>
-                </button>
-                <div class="flex items-center">
-                    <div class="w-8 h-8 rounded-full bg-[#AEE3F3] flex items-center justify-center mr-2">
-                        <span class="text-sm font-medium">A</span>
-                    </div>
-                    <span class="hidden md:inline">Andini</span>
-                </div>
-            </div>
-        </header>
-
-        <!-- Quotes Content -->
-        <main class="p-6">
-            <!-- Quote of the Day -->
-            <div class="bg-white rounded-xl p-6 mb-6 shadow-sm">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-medium">Quote Hari Ini</h2>
-                    <button id="refreshQuote" class="text-sm text-[#4A90E2] hover:underline">Quote Baru</button>
-                </div>
-                <div class="bg-[#F2F2F2] rounded-lg p-5 relative mb-4">
-                    <div class="absolute top-3 left-3 text-4xl text-gray-300">“</div>
-                    <p id="dailyQuoteText" class="text-gray-700 italic pl-8 text-lg">Tidak apa-apa untuk tidak baik-baik saja. Yang penting kamu jujur dengan dirimu sendiri dan mengambil langkah kecil untuk merawat diri.</p>
-                    <div id="dailyQuoteAuthor" class="text-right mt-3 text-gray-500">- SincMe.id Team</div>
-                </div>
-                <div class="flex justify-between items-center">
-                    <button id="saveFavorite" class="text-gray-500 hover:text-[#4A90E2] flex items-center">
-                        <i class="far fa-heart mr-1"></i>
-                        <span class="text-sm">Simpan ke Favorit</span>
-                    </button>
-                    <div class="flex space-x-3">
-                        <button class="text-gray-500 hover:text-[#4A90E2] flex items-center">
-                            <i class="fas fa-share-alt mr-1"></i>
-                            <span class="text-sm">Bagikan</span>
-                        </button>
-                        <button class="text-gray-500 hover:text-[#4A90E2] flex items-center">
-                            <i class="far fa-copy mr-1"></i>
-                            <span class="text-sm">Salin</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Favorite Quotes -->
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-medium">Quote Favorit</h2>
-                    <button class="text-sm text-[#4A90E2] hover:underline">Lihat Semua</button>
-                </div>
-                
-                <div class="space-y-4">
-                    <!-- Favorite Quote 1 -->
-                    <div class="border-b border-gray-200 pb-4">
-                        <div class="bg-[#F2F2F2] rounded-lg p-4 relative">
-                            <div class="absolute top-2 left-2 text-3xl text-gray-300">“</div>
-                            <p class="text-gray-700 italic pl-6">Kamu lebih kuat dari yang kamu kira. Percayalah pada proses dan teruslah melangkah, sekecil apa pun itu.</p>
-                            <div class="text-right mt-2 text-sm text-gray-500">- SincMe.id Team</div>
-                        </div>
-                        <div class="flex justify-between items-center mt-3">
-                            <span class="text-xs text-gray-500">Disimpan 5 hari lalu</span>
-                            <div class="flex space-x-3">
-                                <button class="text-[#4A90E2]">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button class="text-gray-400 hover:text-[#4A90E2]">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Favorite Quote 2 -->
-                    <div class="border-b border-gray-200 pb-4">
-                        <div class="bg-[#F2F2F2] rounded-lg p-4 relative">
-                            <div class="absolute top-2 left-2 text-3xl text-gray-300">“</div>
-                            <p class="text-gray-700 italic pl-6">Istirahat bukanlah tanda kelemahan, tapi bagian dari perawatan diri yang penting.</p>
-                            <div class="text-right mt-2 text-sm text-gray-500">- SincMe.id Team</div>
-                        </div>
-                        <div class="flex justify-between items-center mt-3">
-                            <span class="text-xs text-gray-500">Disimpan 2 minggu lalu</span>
-                            <div class="flex space-x-3">
-                                <button class="text-[#4A90E2]">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button class="text-gray-400 hover:text-[#4A90E2]">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Favorite Quote 3 -->
-                    <div class="pb-4">
-                        <div class="bg-[#F2F2F2] rounded-lg p-4 relative">
-                            <div class="absolute top-2 left-2 text-3xl text-gray-300">“</div>
-                            <p class="text-gray-700 italic pl-6">Perasaanmu valid, apapun itu. Kamu berhak merasakannya tanpa perlu merasa bersalah.</p>
-                            <div class="text-right mt-2 text-sm text-gray-500">- SincMe.id Team</div>
-                        </div>
-                        <div class="flex justify-between items-center mt-3">
-                            <span class="text-xs text-gray-500">Disimpan 1 bulan lalu</span>
-                            <div class="flex space-x-3">
-                                <button class="text-[#4A90E2]">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button class="text-gray-400 hover:text-[#4A90E2]">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+  <main class="p-6 mt-6">
+   <!-- Quote of the Day -->
+<div class="bg-white rounded-xl p-6 mb-6 shadow-sm">
+  <h2 class="text-xl font-medium mb-4">Quote Hari Ini</h2>
+  <div class="space-y-4">
+    <!-- Quote 1 -->
+    <div class="border-b border-gray-200 pb-4">
+      <div class="bg-[#F2F2F2] rounded-lg p-4 relative">
+        <div class="absolute top-2 left-2 text-3xl text-gray-300">“</div>
+        <p class="text-gray-700 italic pl-6">
+          Jangan pernah meremehkan langkah kecil, karena itu tetap membawamu maju.
+        </p>
+        <div class="text-right mt-2 text-sm text-gray-500">- SincMe.id Team</div>
+      </div>
     </div>
 
-    <!-- Daily Quote Popup -->
-    <div id="quotePopup" class="fixed bottom-6 right-6 w-80 bg-white rounded-xl shadow-lg z-50 transform transition-all duration-300 translate-y-4 opacity-0 invisible">
-        <div class="p-5">
-            <div class="flex justify-between items-start mb-3">
-                <h3 class="font-medium text-[#4A90E2]">Quote Harian</h3>
-                <button id="closeQuotePopup" class="text-gray-400 hover:text-gray-600">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="bg-[#F2F2F2] rounded-lg p-4 relative mb-3">
-                <div class="absolute top-2 left-2 text-3xl text-gray-300">“</div>
-                <p id="popupQuoteText" class="text-gray-700 italic pl-6">Tidak apa-apa untuk tidak baik-baik saja. Yang penting kamu jujur dengan dirimu sendiri.</p>
-                <div class="text-right mt-2 text-sm text-gray-500" id="popupQuoteAuthor">- SincMe.id Team</div>
-            </div>
-            <div class="flex justify-between items-center">
-                <button id="addToFavorites" class="text-gray-500 hover:text-[#4A90E2] flex items-center">
-                    <i class="far fa-heart mr-1"></i>
-                    <span class="text-sm">Simpan</span>
-                </button>
-                <div class="flex space-x-2">
-                    <button class="text-gray-500 hover:text-[#4A90E2] p-1">
-                        <i class="fas fa-share-alt"></i>
-                    </button>
-                    <button class="text-gray-500 hover:text-[#4A90E2] p-1">
-                        <i class="far fa-copy"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="bg-[#F2F2F2] px-4 py-2 rounded-b-xl flex justify-between items-center">
-            <span class="text-xs text-gray-500">Tampilkan setiap hari</span>
-            <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" id="dailyQuoteToggle" class="sr-only peer" checked>
-                <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#4A90E2]"></div>
-            </label>
-        </div>
+    <!-- Favorite Quotes -->
+    <div class="bg-white rounded-xl p-6 shadow-sm">
+      <h2 class="text-xl font-medium mb-4">Quote Favorit</h2>
+      <div
+        class="bg-[#F2F2F2] rounded-lg p-6 text-gray-500 italic flex items-center justify-center"
+        style="height: 150px;"
+      >
+        Kamu belum memiliki quotes favorit.
+      </div>
     </div>
+  </main>
+</div>
 
     <script src="../assets/js/quotes.js"></script>
 </body>
