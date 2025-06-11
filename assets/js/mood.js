@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    
     // Save mood button click handler
     saveMoodBtn.addEventListener('click', function() {
         const selectedMood = document.querySelector('input[name="todayMood"]:checked');
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Modal functionality
     const moodInsightsModal = document.getElementById('moodInsightsModal');
     const closeModalBtn = document.getElementById('closeModalBtn');
+    const mengertiMoodBtn = document.getElementById('mengertiMoodBtn');
     
     // In a real app, you might have a button to show insights
     // For demo purposes, we'll show it after 3 seconds
@@ -49,7 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
     closeModalBtn.addEventListener('click', function() {
         moodInsightsModal.classList.add('hidden');
     });
-    
+
+    mengertiMoodBtn.addEventListener('click', function() {
+        moodInsightsModal.classList.add('hidden');
+    });
+        
     moodInsightsModal.addEventListener('click', function(e) {
         if (e.target === moodInsightsModal) {
             moodInsightsModal.classList.add('hidden');

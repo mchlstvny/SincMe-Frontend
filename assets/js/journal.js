@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (this.currentYear === today.getFullYear() && 
                             this.currentMonth === today.getMonth() && 
                             i === today.getDate()) {
-                            dayElement.classList.add('bg-[#AEE3F3]', 'text-[#4A90E2]', 'font-medium');
+                            dayElement.classList.add('bg-[#B8CFCE]', 'text-[#333446]', 'font-medium');
                         }
                         
                         // Add click event
@@ -123,7 +123,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                 5: 'Sangat Baik'
                             };
                             
-                            const entryDate = new Date(journal.date);
+                            const [year, month, day] = journal.date.split('-');
+                            const entryDate = new Date(year, month - 1, day); // Lokal timezone, tanpa offset UTC
+
                             const today = new Date();
                             const yesterday = new Date(today);
                             yesterday.setDate(yesterday.getDate() - 1);
@@ -166,7 +168,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                                 ` : ''}
                                 <div class="flex justify-between items-center">
-                                    <button class="view-journal text-sm text-[#4A90E2] hover:underline" data-id="${journal.id}">Lihat Detail</button>
                                     <button class="bookmark-journal ${journal.bookmarked ? 'text-[#4A90E2]' : 'text-gray-400 hover:text-[#4A90E2]'}" data-id="${journal.id}">
                                         <i class="${journal.bookmarked ? 'fas' : 'far'} fa-bookmark"></i>
                                     </button>
@@ -184,30 +185,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 addJournalEventListeners: function() {
                     document.querySelectorAll('.edit-journal').forEach(button => {
                         button.addEventListener('click', (e) => {
-                            const journalId = e.currentTarget.getAttribute('data-id');
+                            const journalId = button.getAttribute('data-id');
+
                             this.editJournal(journalId);
                         });
                     });
                     
                     document.querySelectorAll('.delete-journal').forEach(button => {
                         button.addEventListener('click', (e) => {
-                            const journalId = e.currentTarget.getAttribute('data-id');
+                            const journalId = button.getAttribute('data-id');
+
                             this.showDeleteModal(journalId);
                         });
                     });
                     
                     document.querySelectorAll('.bookmark-journal').forEach(button => {
                         button.addEventListener('click', (e) => {
-                            const journalId = e.currentTarget.getAttribute('data-id');
+                            const journalId = button.getAttribute('data-id');
+
                             this.toggleBookmark(journalId);
                         });
                     });
                 },
                 
                 // Format date as YYYY-MM-DD
-                formatDate: function(date) {
-                    return date.toISOString().split('T')[0];
-                },
+             formatDate: function(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            },
+
                 
                 // Show new journal modal
                 showNewJournalModal: function() {
@@ -341,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.renderCalendar();
                 },
                 
-                // Setup event listeners
+                // Setup event listeners`   
                 setupEventListeners: function() {
                     // New journal button
                     document.getElementById('newJournalBtn').addEventListener('click', () => this.showNewJournalModal());
@@ -351,10 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('closeJournalModal').addEventListener('click', () => this.closeModal());
                     document.getElementById('cancelJournal').addEventListener('click', () => this.closeModal());
                     
-                    // Delete modal buttons
-                    document.getElementById('closeDeleteModal').addEventListener('click', () => this.closeDeleteModal());
-                    document.getElementById('cancelDelete').addEventListener('click', () => this.closeDeleteModal());
-                    document.getElementById('confirmDelete').addEventListener('click', () => this.deleteJournal());
+   
                     
                     // Form submission
                     document.getElementById('journalForm').addEventListener('submit', (e) => {
