@@ -42,8 +42,7 @@
         <div class="flex items-center mb-10">
             <!-- <img src="assets/images/logo.png" alt="SincMe.id
  Logo" class="h-8 mr-2"> -->
-            <span class="text-xl font-semibold text-[#4A90E2]">SincMe.id
-</span>
+            <span class="text-xl font-semibold text-[#4A90E2]">SincMe.id</span>
         </div>
         
         <div class="flex-1">
@@ -85,7 +84,7 @@
                 <i class="fas fa-user mr-3"></i>
                 <span>Profile</span>
             </a>
-            <a href="#" class="flex items-center p-3 rounded-lg hover:bg-[#F2F2F2] text-gray-600">
+            <a href="logout.html" class="flex items-center p-3 rounded-lg hover:bg-[#F2F2F2] text-gray-600">
                 <i class="fas fa-sign-out-alt mr-3"></i>
                 <span>Logout</span>
             </a>
@@ -113,55 +112,79 @@
      <!-- Main Content -->
       
 <main class=" p-6 space-y-8 min-h-screen">
-<section class=" relative">
-  <h2 class="text-3xl font-semibold mb-8 text-[#4A90E2]">Berita Edukasi Mental Health</h2>
+        <section class=" relative">
+        <h2 class="text-3xl font-semibold mb-8 text-[#4A90E2]">Berita Edukasi Mental Health</h2>
 
-  <div class="relative rounded-lg shadow-lg bg-white">
+        <div class="relative rounded-lg shadow-lg bg-white">
 
-    <div id="articleContainer" class="p-8 " style="height: 300px; overflow: hidden; transition: height 0.4s ease;">
-      <h3 id="articleTitle" class="text-2xl font-semibold text-[#4A90E2] mb-3"></h3>
-      <p id="articleSummary" class="mb-6"></p>
-      <div id="detailContent" style="max-height: 0; overflow-y: auto; transition: max-height 0.4s ease; color: #2d3748;"></div>
-    </div>
+            <div id="articleContainer" class="p-8 " style="height: 300px; overflow: hidden; transition: height 0.4s ease;">
+            <h3 id="articleTitle" class="text-2xl font-semibold text-[#4A90E2] mb-3"></h3>
+            <p id="articleSummary" class="mb-6"></p>
+            <div id="detailContent" style="max-height: 0; overflow-y: auto; transition: max-height 0.4s ease; color: #2d3748;"></div>
+            </div>
 
-    <button id="toggleDetailBtn" class="w-full text-[#4A90E2] hover:underline font-medium">Lihat Penjelasan Lengkap</button>
+            <button id="toggleDetailBtn" class="w-full text-[#4A90E2] hover:underline font-medium">Lihat Penjelasan Lengkap</button>
 
-    <button id="prevBtn" aria-label="Previous article" 
-      class="absolute top-1/2 left-2 -translate-y-1/2 bg-[#4A90E2] text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md hover:bg-[#357ABD] focus:outline-none">
-      &#8249;
-    </button>
-    <button id="nextBtn" aria-label="Next article" 
-      class="absolute top-1/2 right-2 -translate-y-1/2 bg-[#4A90E2] text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md hover:bg-[#357ABD] focus:outline-none">
-      &#8250;
-    </button>
-  </div>
-</section>
-<script src="assets/js/education.js"></script>
-    <section>
-        <h2 class="text-2xl font-semibold mb-4 text-[#4A90E2]">Self Development</h2>
-        <div class="space-y-4">
-            <article class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition">
-                <h3 class="text-xl font-semibold mb-2">Membangun Kebiasaan Positif untuk Mental yang Lebih Sehat</h3>
-                <p>Membangun rutinitas harian yang sehat seperti meditasi dan olahraga ringan dapat memberikan efek positif pada kesehatan mental Anda.</p>
-            </article>
-            <article class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition">
-                <h3 class="text-xl font-semibold mb-2">Cara Mengelola Emosi untuk Meningkatkan Kualitas Hidup</h3>
-                <p>Mempelajari teknik pengelolaan emosi seperti journaling dan komunikasi efektif membantu Anda lebih memahami dan mengendalikan perasaan.</p>
-            </article>
+            <button id="prevBtn" aria-label="Previous article" 
+            class="absolute top-1/2 left-2 -translate-y-1/2 bg-[#4A90E2] text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md hover:bg-[#357ABD] focus:outline-none">
+            &#8249;
+            </button>
+            <button id="nextBtn" aria-label="Next article" 
+            class="absolute top-1/2 right-2 -translate-y-1/2 bg-[#4A90E2] text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md hover:bg-[#357ABD] focus:outline-none">
+            &#8250;
+            </button>
         </div>
-    </section>
+        </section>
+        <script src="assets/js/education.js"></script>
+            <section>
+                <h2 class="text-2xl font-semibold mb-4 text-[#4A90E2]">Self Development</h2>
+                <div class="space-y-4">
+                    <article class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition">
+                        <h3 class="text-xl font-semibold mb-2">Membangun Kebiasaan Positif untuk Mental yang Lebih Sehat</h3>
+                        <p>Membangun rutinitas harian yang sehat seperti meditasi dan olahraga ringan dapat memberikan efek positif pada kesehatan mental Anda.</p>
+                    </article>
+                    <article class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition">
+                        <h3 class="text-xl font-semibold mb-2">Cara Mengelola Emosi untuk Meningkatkan Kualitas Hidup</h3>
+                        <p>Mempelajari teknik pengelolaan emosi seperti journaling dan komunikasi efektif membantu Anda lebih memahami dan mengendalikan perasaan.</p>
+                    </article>
+                </div>
+            </section>
 
-    <section>
-        <h2 class="text-2xl font-semibold mb-4 text-[#4A90E2]">Edukasi tentang AI dan Psikolog/Terapi</h2>
-        <p class="mb-4">Kecerdasan buatan (AI) semakin banyak digunakan dalam bidang kesehatan mental, seperti chatbot dan aplikasi pendukung terapi. Namun, AI bukan pengganti psikolog atau terapis profesional. AI dapat membantu memberikan dukungan awal dan informasi, tapi untuk penanganan mendalam dan diagnosis, konsultasi langsung dengan tenaga kesehatan mental tetap penting.</p>
-        <p>Gunakan teknologi AI sebagai alat bantu, bukan pengganti. Jika Anda mengalami masalah mental serius, jangan ragu untuk mencari bantuan dari ahli.</p>
-    </section>
+            <section>
+                <h2 class="text-2xl font-semibold mb-4 text-[#4A90E2]">Edukasi tentang AI dan Psikolog/Terapi</h2>
+                <p class="mb-4">Kecerdasan buatan (AI) semakin banyak digunakan dalam bidang kesehatan mental, seperti chatbot dan aplikasi pendukung terapi. Namun, AI bukan pengganti psikolog atau terapis profesional. AI dapat membantu memberikan dukungan awal dan informasi, tapi untuk penanganan mendalam dan diagnosis, konsultasi langsung dengan tenaga kesehatan mental tetap penting.</p>
+                <p>Gunakan teknologi AI sebagai alat bantu, bukan pengganti. Jika Anda mengalami masalah mental serius, jangan ragu untuk mencari bantuan dari ahli.</p>
+            </section>
 </main>
 
-
-
+<!-- Notifikasi Pop-up -->
+<div id="notifPopup" class="fixed top-16 right-6 bg-white border border-gray-200 rounded-lg shadow-lg w-64 p-4 hidden z-50">
+    <h3 class="font-semibold text-gray-800 mb-2">Notifikasi</h3>
+    <ul class="text-sm text-gray-600 space-y-1">
+        <li>🌟 Cerita baru dari komunitas!</li>
+        <li>🧠 Artikel edukasi baru telah ditambahkan.</li>
+        <li>💬 Seseorang menyukai postinganmu.</li>
+    </ul>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        const bellBtn = document.querySelector('button i.fa-bell')?.parentElement;
+        const popup = document.getElementById('notifPopup');
+    
+        if (bellBtn && popup) {
+            bellBtn.addEventListener('click', () => {
+                popup.classList.toggle('hidden');
+            });
+    
+            // Close on outside click
+            document.addEventListener('click', (e) => {
+                if (!popup.contains(e.target) && !bellBtn.contains(e.target)) {
+                    popup.classList.add('hidden');
+                }
+            });
+        }
+    </script>
  
 </body>
 </html>
