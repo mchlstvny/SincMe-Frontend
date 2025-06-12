@@ -22,6 +22,21 @@ const quotes = [
     }
 ];
 
+document.addEventListener("DOMContentLoaded", () => {
+    const name = localStorage.getItem("name");
+    const profileLabel = document.getElementById("profileSidebarLabel");
+
+    if (profileLabel) {
+      if (name && name.trim() !== "") {
+        profileLabel.textContent = name;
+      } else {
+        profileLabel.textContent = "Profile";
+      }
+    }
+
+    updateProfileLabel();
+  });
+
 // DOM Elements
 const quotePopup = document.getElementById('quotePopup');
 const popupQuoteText = document.getElementById('popupQuoteText');
@@ -106,3 +121,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const isEnabled = localStorage.getItem('dailyQuoteEnabled') !== 'false';
     dailyQuoteToggle.checked = isEnabled;
 });
+function updateProfileLabel() {
+  const name = localStorage.getItem("name");
+  const profileLabel = document.getElementById("profileSidebarLabel");
+  if (profileLabel) {
+    if (name && name.trim() !== "") {
+      if( name.length > 15) {
+        profileLabel.textContent = name.substring(0, 15) + '...';
+      } else {
+      profileLabel.textContent = name;
+      }
+    } else {
+      profileLabel.textContent = "Profile";
+    }
+  }
+}
+
