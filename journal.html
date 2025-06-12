@@ -106,9 +106,10 @@
                 <i class="fas fa-user mr-3"></i>
                 <span id="profileSidebarLabel">Profile</span>
             </a>
+
+            <a href="logout.html" class="flex items-center p-3 rounded-lg hover:bg-[#F2F2F2] text-gray-6
+                                         
             </div>
-            
-            <a href="#" class="flex items-center p-3 rounded-lg hover:bg-[#F2F2F2] text-gray-600">
                 <i class="fas fa-sign-out-alt mr-3"></i>
                 <span>Logout</span>
             </a>
@@ -186,6 +187,16 @@
                 <button id="createFirstJournal" class="bg-[#B8CFCE] hover:bg-[#3A7BC8] text-[#333446] px-6 py-2 rounded-lg font-medium">
                     Buat Jurnal Pertama
                 </button>
+            </div>
+
+            <!-- Notifikasi Pop-up -->
+            <div id="notifPopup" class="fixed top-16 right-6 bg-white border border-gray-200 rounded-lg shadow-lg w-64 p-4 hidden z-50">
+                <h3 class="font-semibold text-gray-800 mb-2">Notifikasi</h3>
+                <ul class="text-sm text-gray-600 space-y-1">
+                    <li>🌟 Cerita baru dari komunitas!</li>
+                    <li>🧠 Artikel edukasi baru telah ditambahkan.</li>
+                    <li>💬 Seseorang menyukai postinganmu.</li>
+                </ul>
             </div>
         </main>
     </div>
@@ -292,5 +303,22 @@
     </div>
 
     <script src="assets/js/journal.js"></script>
+    <script>
+        const bellBtn = document.querySelector('button i.fa-bell')?.parentElement;
+        const popup = document.getElementById('notifPopup');
+    
+        if (bellBtn && popup) {
+            bellBtn.addEventListener('click', () => {
+                popup.classList.toggle('hidden');
+            });
+    
+            // Close on outside click
+            document.addEventListener('click', (e) => {
+                if (!popup.contains(e.target) && !bellBtn.contains(e.target)) {
+                    popup.classList.add('hidden');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
