@@ -181,3 +181,41 @@ function initMoodCharts() {
         }
     });
 }
+
+function updateProfileLabel() {
+  const name = localStorage.getItem("name");
+  const profileLabel = document.getElementById("profileSidebarLabel");
+  if (profileLabel) {
+    if (name && name.trim() !== "") {
+      if( name.length > 15) {
+        profileLabel.textContent = name.substring(0, 15) + '...';
+      } else {
+      profileLabel.textContent = name;
+      }
+    } else {
+      profileLabel.textContent = "Profile";
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const name = localStorage.getItem("name");
+    const profileLabel = document.getElementById("profileSidebarLabel");
+
+    if (profileLabel) {
+      if (name && name.trim() !== "") {
+        profileLabel.textContent = name;
+      } else {
+        profileLabel.textContent = "Profile";
+      }
+    }
+
+    updateProfileLabel();
+  });
+
+// Update label jika localStorage berubah (misal dari tab lain)
+window.addEventListener("storage", function(e) {
+    if (e.key === "name") {
+        updateProfileLabel();
+    }
+});
