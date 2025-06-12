@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const emojiPicker = document.getElementById("emojiPicker");
     const lockToggle = document.getElementById("lockToggle");
 
-    // Buat userId unik jika belum ada
     if (!localStorage.getItem("currentUserId")) {
         localStorage.setItem("currentUserId", `user_${Date.now()}`);
     }
@@ -15,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let stories = JSON.parse(localStorage.getItem("stories") || "[]");
     let likedStories = JSON.parse(localStorage.getItem("likedStories") || "[]");
     let savedStories = JSON.parse(localStorage.getItem("savedStories") || "[]");
+    let storyReactions = JSON.parse(localStorage.getItem("storyReactions") || "{}"); // {storyId: {userId: emoji}}
 
     let isPrivate = false;
 
@@ -158,27 +158,58 @@ document.addEventListener("DOMContentLoaded", function () {
             actionWrapper.appendChild(likeButton);
             actionWrapper.appendChild(saveButton);
 
-            // Tombol Delete (hanya untuk cerita milik sendiri)
             if (story.ownerId === currentUserId) {
-            const deleteButton = document.createElement("button");
-            deleteButton.className = "mt-3 text-sm text-gray-500 hover:text-red-500";
-            deleteButton.innerHTML = `<i class="fas fa-trash mr-1"></i> Delete`;
-            
-            deleteButton.addEventListener("click", () => {
-                if (confirm("Yakin ingin menghapus cerita ini?")) {
-                    stories = stories.filter(s => s.id !== story.id);
-                    localStorage.setItem("stories", JSON.stringify(stories));
+                const deleteButton = document.createElement("button");
+                deleteButton.className = "mt-3 text-sm text-gray-500 hover:text-red-500";
+                deleteButton.innerHTML = `<i class="fas fa-trash mr-1"></i> Delete`;
+                deleteButton.addEventListener("click", () => {
+                    if (confirm("Yakin ingin menghapus cerita ini?")) {
+                        stories = stories.filter(s => s.id !== story.id);
+                        delete storyReactions[story.id];
+                        localStorage.setItem("stories", JSON.stringify(stories));
+                        localStorage.setItem("storyReactions", JSON.stringify(storyReactions));
+                        renderStories();
+                    }
+                });
+                actionWrapper.appendChild(deleteButton);
+            }
+
+            // REACTION EMOJIS
+            const reactionWrapper = document.createElement("div");
+            reactionWrapper.className = "mt-3 flex space-x-3";
+
+            const emojis = ["👍", "❤️", "😂", "😢", "😡"];
+            const reactions = storyReactions[story.id] || {};
+            const countMap = emojis.reduce((acc, emoji) => {
+                acc[emoji] = Object.values(reactions).filter(r => r === emoji).length;
+                return acc;
+            }, {});
+
+            emojis.forEach(emoji => {
+                const btn = document.createElement("button");
+                btn.className = "text-xl";
+                const isReacted = reactions[currentUserId] === emoji;
+                btn.innerHTML = `${emoji} <span class="text-sm">${countMap[emoji]}</span>`;
+                btn.style.opacity = isReacted ? "1" : "0.6";
+
+                btn.addEventListener("click", () => {
+                    if (!storyReactions[story.id]) storyReactions[story.id] = {};
+                    if (storyReactions[story.id][currentUserId] === emoji) {
+                        delete storyReactions[story.id][currentUserId];
+                    } else {
+                        storyReactions[story.id][currentUserId] = emoji;
+                    }
+                    localStorage.setItem("storyReactions", JSON.stringify(storyReactions));
                     renderStories();
-                }
+                });
+
+                reactionWrapper.appendChild(btn);
             });
-
-            actionWrapper.appendChild(deleteButton);
-        }
-
 
             card.innerHTML = "";
             card.appendChild(topWrapper);
             card.insertAdjacentHTML("beforeend", contentDiv);
+            card.appendChild(reactionWrapper); // insert reactions
             card.appendChild(actionWrapper);
 
             storiesContainer.appendChild(card);
@@ -210,4 +241,42 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.removeChild(modal);
         });
     }
+
+    function updateProfileLabel() {
+        const name = localStorage.getItem("name");
+        const profileLabel = document.getElementById("profileSidebarLabel");
+        if (profileLabel) {
+            if (name && name.trim() !== "") {
+                profileLabel.textContent = name;
+            } else {
+                profileLabel.textContent = "Profile";
+            }
+        }
+    }
+
+    updateProfileLabel();
+
+    // Update label jika localStorage berubah (misal dari tab lain)
+    window.addEventListener("storage", function(e) {
+        if (e.key === "name") {
+            updateProfileLabel();
+        }
+    });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const name = localStorage.getItem("name");
+    const profileLabel = document.getElementById("profileSidebarLabel");
+
+    if (profileLabel) {
+      if (name && name.trim() !== "") {
+        if( name.length > 15) {
+        profileLabel.textContent = name.substring(0, 15) + '...';
+        } else {
+        profileLabel.textContent = name;
+        }
+        } else {
+            profileLabel.textContent = "Profile";
+        }
+        }
+    });
